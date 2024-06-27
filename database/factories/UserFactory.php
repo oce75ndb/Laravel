@@ -26,10 +26,15 @@ class UserFactory extends Factory
         $type = rand(1, 4);
 
         return [
-            'name' => fake()->lastName(),
-            'prenom' => fake()->firstName(),
-            'type' => ($type==1?"Professeur":"Eleve"),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => fake('FR_fr')->lastName(),
+            'prenom' => fake('FR_fr')->firstName(),
+            'type' => ($type==1?"Professeur":"Elève"),
+            'adresse' => fake('FR_fr')->address(),
+            'date_naissance' => fake()->date('Y-m-d'),
+            'cp' => fake('FR_fr')->postcode(),
+            'ville' => fake('FR_fr')->city(),
+            'tel' => fake('FR_fr')->phoneNumber(),
+            'email' => fake('FR_fr')->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),

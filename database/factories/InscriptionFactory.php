@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Cour;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Inscription>
@@ -24,7 +26,8 @@ class InscriptionFactory extends Factory
         $userId = $userIdArray[array_rand($userIdArray)];
 
         return [
-            //
+            'cours_id' => $coursId,
+            'eleve_id' => $userId,
         ];
     }
 }

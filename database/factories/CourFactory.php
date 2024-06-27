@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cour>
  */
@@ -16,9 +16,11 @@ class CourFactory extends Factory
      */
     public function definition(): array
     {
+        $usersArray = User::where('type','Professeur')->pluck('id')->toArray();
+        $user = $usersArray[array_rand($usersArray)];
         return [
             'nom' => fake('FR_fr')->title(),
-            'professeur' => fake('FR_fr')->title(),
+            'professeur_id' => $user,
         ];
     }
 }
