@@ -16,6 +16,13 @@ class InscriptionFactory extends Factory
      */
     public function definition(): array
     {
+        
+        $coursIdArray = Cour::pluck('id')->toArray();
+        $coursId = $coursIdArray[array_rand($coursIdArray)];
+
+        $userIdArray = User::where('type',"Eleve")->pluck('id')->toArray();
+        $userId = $userIdArray[array_rand($userIdArray)];
+
         return [
             //
         ];
