@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->foreignId('professeur_id')->constrained('users')->onDelete('cascade');
-            $table->timestamps();
+            //$table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
+
         });        
     }
 
